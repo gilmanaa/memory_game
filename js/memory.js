@@ -37,11 +37,46 @@ function newGame(difficulty) {
     }
     var cardHide = $(".card_back");
     var cardShow = $(".card_front");
+    var cardPosition1;
+    var cardPosition2;
+    var cardShowing1;
+    var cardShowing2;
+    var cardMatchData = [];
+    var clickCounter = 0;
+    var wrongGuesses = 0;
+    var correctGuesses = 0;
     cardHide.on('click',function(event){
-        var cardClick = $(this);
-        var cardPosition = $(this).data("name");
-        cardClick.toggleClass("card_front");
-        var cardShowing = cardShow[cardPosition];
-        cardShowing.className = "card_back";
+        if (clickCounter === 0) {
+            clickCounter++;
+            var cardClick = $(this);
+            cardPosition1 = $(this).data("name");
+            cardClick.toggleClass("card_front");
+            cardShowing1 = cardShow[cardPosition1];
+            cardShowing1.className = "card_back";
+            cardMatchData[0] = cardShowing1.src;
+        } else if (clickCounter === 1) {
+            clickCounter++;
+            var cardClick = $(this);
+            cardPosition2 = $(this).data("name");
+            cardClick.toggleClass("card_front");
+            cardShowing2 = cardShow[cardPosition2];
+            cardShowing2.className = "card_back";
+            cardMatchData[1] = cardShowing2.src;
+            if (cardMatchData[0] !== cardMatchData[1]) {
+                function incorrectGuess() {
+                    wrongGuesses++;
+                    cardShowing1.className = "card_front";
+                    cardShowing2.className = "card_front";
+                    cardHide[cardPosition1].className = "card_back";
+                    cardHide[cardPosition2].className = "card_back";
+                    clickCounter = 0;
+                }
+                setTimeout(incorrectGuess,1000);
+            } else {
+                clickCounter = 0;
+                correctGuesses++;
+            }
+        }
+        
     })
 }
