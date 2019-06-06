@@ -92,6 +92,7 @@ function newGame(difficulty) {
         if (correctGuesses === difficulty) {
             var container = $(".container");
             var youWon = $("<div>");
+            var br = $("<br>");
             var playAgain = $("<button>");
             youWon.addClass("winner");
             youWon.text("You Won!");
@@ -104,6 +105,7 @@ function newGame(difficulty) {
                 var difficult = 12;
                 newGame(easy);
             })
+            br.appendTo(youWon);
             playAgain.appendTo(youWon);
         }
     })

@@ -8,8 +8,16 @@ body {
 header {
     background-color: green;
     color: white;
-    font-size: 4vw;
+    font-size: 4vh;
     font-family: 'gugi', Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
     text-align: center;
 }
 .button_hide {
@@ -25,17 +33,17 @@ header {
     height: 26vh;
 }
 .winner {
-    position: absolute;
-    background-color: green;
     color: white;
-    border: 1px solid white;
-    border-radius: 20%;
     font-size: 4vh;
     text-align: center;
+    padding: 3px;
 }
 @media screen and (max-width: 600px) {
     .card img {
         height: 100%;
         width: 23vw;
+    }
+    header {
+        font-size: 4vw;
     }
 }
