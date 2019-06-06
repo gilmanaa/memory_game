@@ -1,0 +1,20 @@
+body {
+    margin: 0px;
+    background-image: url(../images/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+.card{
+    display: inline-block;
+}
+.card img {
+    height: 26vh;
+    
+}
+@media screen and (max-width: 600px) {
+    .card img {
+        height: 100%;
+        width: 23vw;
+    }
+}
