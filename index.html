@@ -5,36 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    
     <link rel="stylesheet" href="./css/memory.css">
+    <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
 
     <title>Memory Game</title>
 </head>
 
 <body>
     <header>
-        <button id="newGame">New Game</button>
+        Welcome to the Casino Memory Game! <br>
+        <button class="newGame">New Game</button>
     </header>
-    <div class="container">
-        <div class="row">
-            <div class="row1col1 card"></div>
-            <div class="row1col2 card"></div>
-            <div class="row1col3 card"></div>
-            <div class="row1col4 card"></div>
-        </div>
-        <div class="row">
-            <div class="row2col1 card"></div>
-            <div class="row2col2 card"></div>
-            <div class="row2col3 card"></div>
-            <div class="row2col4 card"></div>
-        </div>
-        <div class="row">
-            <div class="row3col1 card"></div>
-            <div class="row3col2 card"></div>
-            <div class="row3col3 card"></div>
-            <div class="row3col4 card"></div>
-        </div>
-    </div>
+    <div class="container" id="gameBox"></div>
 
     <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
     <script src="./js/memory.js"></script>
