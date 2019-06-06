@@ -32,11 +32,22 @@ header {
 .card img {
     height: 26vh;
 }
+.wrongGuessCont {
+    position: absolute;
+    bottom: 0px;
+    right: 5px;
+    font-family: 'gugi', Arial, Helvetica, sans-serif;
+    color: black;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    font-size: 5vh;
+}
 .winner {
-    color: white;
-    font-size: 4vh;
+    color: black;
+    font-size: 3vh;
     text-align: center;
     padding: 3px;
+    font-family: 'gugi', Arial, Helvetica, sans-serif;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 @media screen and (max-width: 600px) {
     .card img {

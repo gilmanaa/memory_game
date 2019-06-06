@@ -57,6 +57,10 @@ function newGame(difficulty) {
     var clickCounter = 0;
     var wrongGuesses = 0;
     var correctGuesses = 0;
+    var wrongGuessesContainer = $("<span>");
+    wrongGuessesContainer.addClass("wrongGuessCont");
+    wrongGuessesContainer.text(`Wrong Guesses: ${wrongGuesses}`);
+    wrongGuessesContainer.appendTo($(".container"));
     cardHide.on('click', function (event) {
         if (clickCounter === 0) {
             clickCounter++;
@@ -77,6 +81,7 @@ function newGame(difficulty) {
             if (cardMatchData[0] !== cardMatchData[1]) {
                 function incorrectGuess() {
                     wrongGuesses++;
+                    wrongGuessesContainer.text(`Wrong Guesses: ${wrongGuesses}`);
                     cardShowing1.className = "card_front";
                     cardShowing2.className = "card_front";
                     cardHide[cardPosition1].className = "card_back";
@@ -90,9 +95,10 @@ function newGame(difficulty) {
             }
         }
         if (correctGuesses === difficulty) {
+            wrongGuessesContainer.addClass("card_front");
             var container = $(".container");
             var youWon = $("<div>");
-            var br = $("<br>");
+            var wrongGuessesFinal = $("<div>");
             var playAgain = $("<button>");
             youWon.addClass("winner");
             youWon.text("You Won!");
@@ -105,7 +111,8 @@ function newGame(difficulty) {
                 var difficult = 12;
                 newGame(easy);
             })
-            br.appendTo(youWon);
+            wrongGuessesFinal.text(`Wrong Guesses: ${wrongGuesses}`);
+            wrongGuessesFinal.appendTo(youWon);
             playAgain.appendTo(youWon);
         }
     })
