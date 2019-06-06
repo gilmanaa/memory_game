@@ -9,9 +9,15 @@ function buildDeck() {
         }
     }
 }
-var boardPositions = $(".card");
+$("#newGame").click(function() {
+    var easy = 6;
+    var medium = 9;
+    var difficult = 12;
+    newGame(easy);
+})
 function newGame(difficulty) {
     buildDeck();
+    var boardPositions = $(".card");
     var cardsForCurrentGame = [];
     for (var i = 0; i < difficulty; i++) {
         var random = Math.floor(Math.random()*deck.cards.length);
@@ -24,10 +30,18 @@ function newGame(difficulty) {
     for (var k = 0; k < difficulty*2; k++) {
         var randomPlacement = Math.floor(Math.random()*cardsForCurrentGame.length);
         var placementSplice = cardsForCurrentGame.splice(randomPlacement,1);
-        var placementImage = $('<img>').attr("src",placementSplice);
+        var placementImage = $('<img>').attr("src",placementSplice).attr("class","card_front");
+        var coverImage = $('<img>').attr("src","./images/cards/black_joker.png").attr("class","card_back").data("name",k);
         boardPositions[k].append(placementImage[0]);
+        boardPositions[k].append(coverImage[0]);
     }
+    var cardHide = $(".card_back");
+    var cardShow = $(".card_front");
+    cardHide.on('click',function(event){
+        var cardClick = $(this);
+        var cardPosition = $(this).data("name");
+        cardClick.toggleClass("card_front");
+        var cardShowing = cardShow[cardPosition];
+        cardShowing.className = "card_back";
+    })
 }
-$("#newGame").click(function() {
-    newGame(6);
-})

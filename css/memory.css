@@ -8,9 +8,11 @@ body {
 .card{
     display: inline-block;
 }
+.card_front {
+    display: none;
+}
 .card img {
     height: 26vh;
-    
 }
 @media screen and (max-width: 600px) {
     .card img {
