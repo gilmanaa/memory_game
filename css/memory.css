@@ -20,6 +20,14 @@ header {
     height: 90vh;
     text-align: center;
 }
+button {
+    background-color: crimson;
+    color: white;
+    border-radius: 10%;
+}
+button:hover {
+    cursor: pointer;
+}
 .button_hide {
     display: none;
 }
@@ -28,6 +36,9 @@ header {
 }
 .card_front {
     display: none;
+}
+.card_back:hover {
+    cursor: pointer;
 }
 .card img.imgSize_6{
     height: 26vh;
