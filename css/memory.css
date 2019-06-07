@@ -29,8 +29,14 @@ header {
 .card_front {
     display: none;
 }
-.card img {
+.card img.imgSize_6{
     height: 26vh;
+}
+.card img.imgSize_8{
+    height: 19vh;
+}
+.card img.imgSize_10{
+    height: 15vh;
 }
 .wrongGuessCont {
     position: absolute;
@@ -50,11 +56,22 @@ header {
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 @media screen and (max-width: 600px) {
-    .card img {
+    .card img.imgSize_6 {
         height: 100%;
         width: 23vw;
     }
+    .card img.imgSize_8{
+        height: 100%;
+        width: 23vw;
+    }
+    .card img.imgSize_10{
+        height: 100%;
+        width: 18vw;
+    }
     header {
         font-size: 4vw;
+    }
+    button {
+        font-size: 3vw;
     }
 }
