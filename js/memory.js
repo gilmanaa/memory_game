@@ -9,15 +9,25 @@ function buildDeck() {
         }
     }
 }
+var username;
 $("button:nth-child(2)").data("difficulty",6);
 $("button:nth-child(3)").data("difficulty",8);
 $("button:nth-child(4)").data("difficulty",10);
-$(".newGame").click(function () {
-    var difficulty = $(this).data("difficulty");
-    newGame(difficulty);
+$(".newGame").click(function (event) {
+    if ($("#username").val() === "") {
+        event.preventDefault();
+        $("#username").addClass("usernameAlert");
+    } else {
+        username = $("#username").val();
+        var difficulty = $(this).data("difficulty");
+        newGame(difficulty);
+    }
 });
 function newGame(difficulty) {
     buildDeck();
+    if (localStorage.getItem(`highScoreMemoryGame${difficulty}`) === null) {
+        localStorage.setItem(`highScoreMemoryGame${difficulty}`,Number.MAX_SAFE_INTEGER);
+    }
     $(".newGame").addClass("button_hide");
     document.getElementById("gameBox").innerHTML = "";
     for (var i = 0; i < Math.floor(difficulty*2/4); i++) {
@@ -117,12 +127,23 @@ function newGame(difficulty) {
             playAgainDifficult.text("New Game Difficult");
             wrongGuessesFinal.text(`Wrong Guesses: ${wrongGuesses}`);
             wrongGuessesFinal.appendTo(youWon);
+            if (wrongGuesses < localStorage.getItem(`highScoreMemoryGame${difficulty}`)) {
+                localStorage.setItem(`highScoreMemoryGame${difficulty}`,wrongGuesses);
+                localStorage.setItem(`highScoreMemoryGameUsername${difficulty}`,username);
+                var highScoreContainer = $("<div>");
+                highScoreContainer.text(`New High Score!!!`);
+                highScoreContainer.appendTo(youWon);
+            } else {
+                var highScoreContainer = $("<div>");
+                highScoreContainer.text(`High Score: ${localStorage.getItem(`highScoreMemoryGame${difficulty}`)} ${localStorage.getItem(`highScoreMemoryGameUsername${difficulty}`)}`);
+                highScoreContainer.appendTo(youWon);
+            }
             playAgainEasy.appendTo(youWon);
             playAgainMedium.appendTo(youWon);
             playAgainDifficult.appendTo(youWon);
-            $("button:nth-child(2)").data("difficulty",6);
-            $("button:nth-child(3)").data("difficulty",8);
-            $("button:nth-child(4)").data("difficulty",10);
+            $("button:nth-child(3)").data("difficulty",6);
+            $("button:nth-child(4)").data("difficulty",8);
+            $("button:nth-child(5)").data("difficulty",10);
             $(".newGame").click(function () {
                 var difficulty = $(this).data("difficulty");
                 newGame(difficulty);
