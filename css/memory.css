@@ -12,6 +12,14 @@ header {
     font-family: 'gugi', Arial, Helvetica, sans-serif;
     text-align: center;
 }
+.container_start {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    text-align: center;
+}
 .container {
     display: flex;
     flex-direction: column;

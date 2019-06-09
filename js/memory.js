@@ -10,9 +10,9 @@ function buildDeck() {
     }
 }
 var username;
-$("button:nth-child(2)").data("difficulty",6);
-$("button:nth-child(3)").data("difficulty",8);
-$("button:nth-child(4)").data("difficulty",10);
+$("button:nth-child(2)").data("difficulty", 6);
+$("button:nth-child(3)").data("difficulty", 8);
+$("button:nth-child(4)").data("difficulty", 10);
 $(".newGame").click(function (event) {
     if ($("#username").val() === "") {
         event.preventDefault();
@@ -26,16 +26,17 @@ $(".newGame").click(function (event) {
 function newGame(difficulty) {
     buildDeck();
     if (localStorage.getItem(`highScoreMemoryGame${difficulty}`) === null) {
-        localStorage.setItem(`highScoreMemoryGame${difficulty}`,Number.MAX_SAFE_INTEGER);
+        localStorage.setItem(`highScoreMemoryGame${difficulty}`, Number.MAX_SAFE_INTEGER);
     }
     $(".newGame").addClass("button_hide");
     document.getElementById("gameBox").innerHTML = "";
-    for (var i = 0; i < Math.floor(difficulty*2/4); i++) {
+    document.getElementById("gameBox").className = "container";
+    for (var i = 0; i < Math.floor(difficulty * 2 / 4); i++) {
         var row = $("<div>");
         row.addClass("row");
         row.appendTo($(".container"));
     }
-    for (var i = 0; i < difficulty*2/(Math.floor(difficulty*2/4)); i++) {
+    for (var i = 0; i < difficulty * 2 / (Math.floor(difficulty * 2 / 4)); i++) {
         var divCard = $("<div>");
         divCard.addClass("card");
         divCard.appendTo($(".row"));
@@ -58,7 +59,7 @@ function newGame(difficulty) {
         boardPositions[k].append(placementImage[0]);
         boardPositions[k].append(coverImage[0]);
     }
-    $("img").each(function() {
+    $("img").each(function () {
         $(this).addClass(`imgSize_${difficulty}`);
     });
     var cardHide = $(".card_back");
@@ -128,8 +129,8 @@ function newGame(difficulty) {
             wrongGuessesFinal.text(`Wrong Guesses: ${wrongGuesses}`);
             wrongGuessesFinal.appendTo(youWon);
             if (wrongGuesses < localStorage.getItem(`highScoreMemoryGame${difficulty}`)) {
-                localStorage.setItem(`highScoreMemoryGame${difficulty}`,wrongGuesses);
-                localStorage.setItem(`highScoreMemoryGameUsername${difficulty}`,username);
+                localStorage.setItem(`highScoreMemoryGame${difficulty}`, wrongGuesses);
+                localStorage.setItem(`highScoreMemoryGameUsername${difficulty}`, username);
                 var highScoreContainer = $("<div>");
                 highScoreContainer.text(`New High Score!!!`);
                 highScoreContainer.appendTo(youWon);
@@ -141,9 +142,9 @@ function newGame(difficulty) {
             playAgainEasy.appendTo(youWon);
             playAgainMedium.appendTo(youWon);
             playAgainDifficult.appendTo(youWon);
-            $("button:nth-child(3)").data("difficulty",6);
-            $("button:nth-child(4)").data("difficulty",8);
-            $("button:nth-child(5)").data("difficulty",10);
+            $("button:nth-child(3)").data("difficulty", 6);
+            $("button:nth-child(4)").data("difficulty", 8);
+            $("button:nth-child(5)").data("difficulty", 10);
             $(".newGame").click(function () {
                 var difficulty = $(this).data("difficulty");
                 newGame(difficulty);
