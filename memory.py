@@ -1,6 +1,9 @@
-from bottle import route, run, template, static_file, request
+from bottle import route, run, template, static_file, debug
 import os
+from sys import argv
 
+DEBUG = os.environ.get("DEBUG")
+debug(True)
 
 @route('/')
 def index():
@@ -18,8 +21,7 @@ def javascripts(filename):
 def images(filename):
     return static_file(filename, root="")
 
-def main():
-    run(host='localhost', port=7000)
-
-if __name__ == '__main__':
-    main()
+if DEBUG:
+	run(host='localhost', port=7000)
+else:
+	run(host='0.0.0.0', port=argv[1])

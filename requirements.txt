@@ -1,0 +1,4 @@
+bottle==0.12.17
+feedparser==5.2.1
+Jinja2==2.10.1
+MarkupSafe==1.1.1
